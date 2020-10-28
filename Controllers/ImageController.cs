@@ -22,7 +22,6 @@ namespace ImageService.Controllers
         [HttpGet]
         public async Task<IEnumerable<Image>> Get()
         {
-            var rng = new Random();
             return await Task.Run(() => Enumerable.Range(1, 5).Select(index => new Image()).ToArray());
         }
     }
