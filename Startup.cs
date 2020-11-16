@@ -1,7 +1,10 @@
 using System;
 using System.Net.Http;
+using AutoMapper;
+using ImageService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -31,10 +34,14 @@ namespace ImageService
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Ignore;
             });
-            
+
+            services.AddAutoMapper(typeof(Startup));
+            services.AddTransient<IImageServiceTest, ImageServiceTest>();
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen();
             services.AddControllers();
+            var connectionString = Configuration.GetConnectionString("Image");
+            services.AddEntityFrameworkSqlServer().AddDbContext<ImageContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

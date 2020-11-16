@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ImageService.Models;
 using System.Threading.Tasks;
+using AutoMapper;
+using ImageService.Services;
 
 namespace ImageService.Controllers
 {
@@ -12,17 +12,22 @@ namespace ImageService.Controllers
     [Route("[controller]")]
     public class ImageController : ControllerBase
     {
+        private readonly IMapper _mapper;
+        private readonly IImageServiceTest _imageServiceTest;
         private readonly ILogger<ImageController> _logger;
 
-        public ImageController(ILogger<ImageController> logger)
+        public ImageController(IMapper mapper,  IImageServiceTest imageServiceTest, ILogger<ImageController> logger)
         {
+            _mapper = mapper;
+            _imageServiceTest = imageServiceTest;
             _logger = logger;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Image>> Get()
         {
-            return await Task.Run(() => Enumerable.Range(1, 5).Select(index => new Image()).ToArray());
+            var imageEntities =  await _imageServiceTest.GetAll();
+            return _mapper.Map<IEnumerable<Image>>(imageEntities);
         }
     }
 }
