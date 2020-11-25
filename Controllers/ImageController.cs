@@ -5,10 +5,12 @@ using ImageService.Models;
 using System.Threading.Tasks;
 using AutoMapper;
 using ImageService.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ImageService.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class ImageController : ControllerBase
     {

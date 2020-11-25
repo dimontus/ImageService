@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using AuthenticationBase;
 using AutoMapper;
 using ImageService.Services;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +28,7 @@ namespace ImageService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppAuthentication(Configuration);
             services.AddMvc().AddNewtonsoftJson();
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -63,6 +65,7 @@ namespace ImageService
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

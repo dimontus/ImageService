@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageService", "ImageService.csproj", "{C2174A3B-EFA4-4510-8F16-C1924390FEDD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationBase", "..\AuthenticationBase\AuthenticationBase.csproj", "{52AAF0D1-2C43-4614-B027-956CB50ED209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C2174A3B-EFA4-4510-8F16-C1924390FEDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2174A3B-EFA4-4510-8F16-C1924390FEDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2174A3B-EFA4-4510-8F16-C1924390FEDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52AAF0D1-2C43-4614-B027-956CB50ED209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52AAF0D1-2C43-4614-B027-956CB50ED209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52AAF0D1-2C43-4614-B027-956CB50ED209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52AAF0D1-2C43-4614-B027-956CB50ED209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
